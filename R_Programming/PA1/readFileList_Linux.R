@@ -15,6 +15,6 @@
 #
 readFileList <- function(directory) {
   # get list of files
-  filelist <- system(paste("ls ", directory), intern = TRUE)
+  filelist <- # secret!
   return (filelist)
 }

@@ -19,39 +19,36 @@
 
 pollutantmean <- function(directory, pollutant, id = 1:332) {
   
-  filelist <- readFileList(directory)  # get list of data files
+  # get list of data files
   
-  meanMonitors <- numeric()  # create empty vector for mean values
+  # create empty vector for mean values
   
-  for (filename in filelist) {
+  for  {
     
     # read data from one file, creates dataframe 'data'
-    data <- 
-      read.csv(paste("./", directory, "/", filename, sep = ""))
     
     # check that the station ID is in the set we want
-    if (data[1,4] %in% id) {
-    # check that pollutant specified matches one here
-        if ((pollutant != names(data)[2]) &
-              (pollutant != names(data)[3])) { break }
+ 
+   # check that pollutant specified matches one here
+
         # or...
         #if ((data$sulfate != pollutant) &
         #      (data$nitrate != pollutant)) { break }
         # nope
         
         # create logical vector indicating non-NA values
-        good <- complete.cases(data[, pollutant])
+
         
         # create a vector of pollutant values, with NA removed
-        values <- data[, pollutant][good]
+
         
         # take the mean of those values, and append it to the
         # vector of means from all stations
-        meanMonitors <- c(meanMonitors, mean(values))
+
       }
     }
 
   # take the mean of all station means - not the mean of all
   # observations
-  meanPollutantLevel <- mean(meanMonitors)  # return value
+
 }
